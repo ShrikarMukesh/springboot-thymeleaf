@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Details</title>
+</head>
+   <body>
+     <h1>Customer Details</h1>
+     <p>Customer ID: <span th:text="${customer.customerId}"></span></p>
+     <p>Date of Birth: <span th:text="${customer.dateOfBirth}"></span></p>
+     <p>Source Name: <span th:text="${customer.sourceName}"></span></p>
+     <p>Source ID: <span th:text="${customer.sourceId}"></span></p>
+     <p>Search Scope: <span th:text="${customer.searchScope}"></span></p>
+
+     <p>Status: <span th:text="${customer.kycDetails.status}"></span></p>
+     <p>Verification Level: <span th:text="${customer.kycDetails.verificationLevel}"></span></p>
+   </body>
+</html>
