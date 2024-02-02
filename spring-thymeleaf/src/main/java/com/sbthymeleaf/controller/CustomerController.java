@@ -7,6 +7,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Arrays;
 
@@ -19,6 +22,34 @@ public class CustomerController {
     public CustomerController(CustomerService customerService) {
         this.customerService = customerService;
     }
+
+    @GetMapping("/showFormForAdd")
+    public String showFormForAdd(Model theModel) {
+        Customer theCustomer = new Customer();
+        theModel.addAttribute("customer", theCustomer);
+        return "customer-form";
+    }
+
+    @PostMapping("/save")
+    public String saveCustomer(@ModelAttribute("customer") Customer theCustomer) {
+        customerService.saveCustomer(theCustomer);
+        return "redirect:/customers/list";
+    }
+
+    @GetMapping("/showFormForUpdate")
+    public String showFormForUpdate(@RequestParam("customerId") String customerId, Model theModel) {
+        Customer theCustomer = customerService.findByCustomerId(customerId);
+        theModel.addAttribute("customer", theCustomer);
+        return "customer-form";
+    }
+
+    @GetMapping("/showFormForDelete")
+    public String showFormForDelete(@RequestParam("customerId") String customerId) {
+        Customer theCustomer = customerService.findByCustomerId(customerId);
+        customerService.delete(theCustomer);
+        return "redirect:/customers/list";
+    }
+
 
     @GetMapping("/customer")
     public String customer(Model model) {

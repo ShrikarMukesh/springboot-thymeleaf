@@ -17,6 +17,5 @@ public class Customer {
     private String sourceName;
     private String sourceId;
     private KycDetails kycDetails;
-
 }
 

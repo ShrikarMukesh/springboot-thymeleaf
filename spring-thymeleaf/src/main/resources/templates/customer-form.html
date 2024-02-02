@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Form</title>
+</head>
+<body>
+<div class="container">
+
+
+<h1>Customer Form</h1>
+     <form action="/saveCustomer" method="post" th:object="${customer}">
+         <label>Customer ID: </label> <input type="text" th:field="*{customerId}" /><br/>
+         <label>Profile IDs (comma-separated): </label> <input type="text" th:field="*{profileId}" /><br/>
+
+        <label>Search Scope: </label> <input type="number" step="0.01" th:field="*{searchScope}" /><br/>
+
+        <label>Date of Birth: </label> <input type="date" th:field="*{dateOfBirth}" /><br/>
+
+        <label>Source Name: </label> <input type="text" th:field="*{sourceName}" /><br/>
+
+        <label>Source ID: </label> <input type="text" th:field="*{sourceId}" /><br/>
+
+        <!-- KycDetails -->
+       <h2>KycDetails</h2>
+       <label>Status: </label> <input type="text" th:field="*{kycDetails.status}" /><br/>
+
+       <label>Verification Level: </label> <input type="text" th:field="*{kycDetails.verificationLevel}" /><br/>
+
+    <input type="submit" value="Save"/>
+</form>
+
+</div>
+</body>
+</html>
