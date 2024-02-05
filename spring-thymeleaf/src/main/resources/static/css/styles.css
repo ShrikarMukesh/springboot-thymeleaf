@@ -1,0 +1,3 @@
+form > *:not(#fields) {
+    display: none;
+}

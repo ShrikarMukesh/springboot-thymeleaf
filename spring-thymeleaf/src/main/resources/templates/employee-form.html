@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Select Fields and Generate Form</title>
+    <style>
+        #fields-container {
+            display: block;
+        }
+        #formContainer {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="fields-container">
+    <label for="fields">Select Fields:</label>
+    <select id="fields" multiple>
+        <option value="firstName">First Name</option>
+        <option value="lastName">Last Name</option>
+        <option value="age">Age</option>
+        <option value="email">Email</option>
+        <!-- Add options for other available fields -->
+    </select>
+    <button type="button" onclick="selectFields()">Select Fields</button>
+</div>
+
+<div id="formContainer"></div>
+
+<script>
+    function selectFields() {
+        var selectedFields = [];
+        var select = document.getElementById("fields");
+        for (var option of select.options) {
+            if (option.selected) {
+                selectedFields.push(option.value);
+            }
+        }
+        generateForm(selectedFields);
+    }
+
+    function generateForm(selectedFields) {
+        var formContainer = document.getElementById("formContainer");
+        formContainer.innerHTML = ""; // Clear existing content
+
+        var form = document.createElement("form");
+        form.id = "generatedForm";
+
+        selectedFields.forEach(function(field) {
+            var div = document.createElement("div");
+            var label = document.createElement("label");
+            label.textContent = field + ": ";
+            var input = document.createElement("input");
+            input.type = "text";
+            input.name = field;
+            div.appendChild(label);
+            div.appendChild(input);
+            form.appendChild(div);
+        });
+
+        var submitButton = document.createElement("button");
+        submitButton.type = "button";
+        submitButton.textContent = "Submit";
+        submitButton.addEventListener("click", submitForm);
+        form.appendChild(submitButton);
+
+        formContainer.appendChild(form);
+
+        // Hide the fields container after form generation
+        var fieldsContainer = document.getElementById("fields-container");
+        fieldsContainer.style.display = "none";
+    }
+
+    function submitForm() {
+        var form = document.getElementById("generatedForm");
+        // Process the form data or perform any other actions
+        console.log("Form submitted!");
+    }
+</script>
+
+</body>
+</html>

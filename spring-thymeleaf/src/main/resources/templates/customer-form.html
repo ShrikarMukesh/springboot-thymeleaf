@@ -3,32 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <title>Customer Form</title>
+    <script>
+        function submitForm() {
+            var formData = {
+                console.log('Inside submitForm')
+                customerId: document.getElementById('customerId').value,
+                profileId: document.getElementById('profileId').value.split(','),
+                searchScope: parseFloat(document.getElementById('searchScope').value),
+                dateOfBirth: document.getElementById('dateOfBirth').value,
+                sourceName: document.getElementById('sourceName').value,
+                sourceId: document.getElementById('sourceId').value,
+                kycDetails: {
+                    status: document.getElementById('status').value,
+                    verificationLevel: document.getElementById('verificationLevel').value
+                }
+            };
+
+            var jsonData = JSON.stringify(formData);
+            console.log(jsonData); // Print jsonData to the consolee3
+            document.getElementById('jsonData').value = jsonData;
+        }
+    </script>
 </head>
 <body>
 <div class="container">
 
 
 <h1>Customer Form</h1>
-     <form action="/saveCustomer" method="post" th:object="${customer}">
+
+     <form action="/saveCustomer" method="post" th:object="${customer}"  onsubmit="submitForm()">
+
+     <!-- <form action="/save" method="post" onsubmit="submitForm()"> -->
+
          <label>Customer ID: </label> <input type="text" th:field="*{customerId}" /><br/>
+
          <label>Profile IDs (comma-separated): </label> <input type="text" th:field="*{profileId}" /><br/>
 
-        <label>Search Scope: </label> <input type="number" step="0.01" th:field="*{searchScope}" /><br/>
+         <label>Search Scope: </label> <input type="number" step="0.01" th:field="*{searchScope}" /><br/>
 
-        <label>Date of Birth: </label> <input type="date" th:field="*{dateOfBirth}" /><br/>
+         <label>Date of Birth: </label> <input type="date" th:field="*{dateOfBirth}" /><br/>
 
-        <label>Source Name: </label> <input type="text" th:field="*{sourceName}" /><br/>
+         <label>Source Name: </label> <input type="text" th:field="*{sourceName}" /><br/>
 
-        <label>Source ID: </label> <input type="text" th:field="*{sourceId}" /><br/>
+         <label>Source ID: </label> <input type="text" th:field="*{sourceId}" /><br/>
 
-        <!-- KycDetails -->
-       <h2>KycDetails</h2>
-       <label>Status: </label> <input type="text" th:field="*{kycDetails.status}" /><br/>
+         <!-- KycDetails -->
+         <h2>KycDetails</h2>
+         <label>Status: </label> <input type="text" th:field="*{kycDetails.status}" /><br/>
 
-       <label>Verification Level: </label> <input type="text" th:field="*{kycDetails.verificationLevel}" /><br/>
+         <label>Verification Level: </label> <input type="text" th:field="*{kycDetails.verificationLevel}" /><br/>
 
-    <input type="submit" value="Save"/>
-</form>
+        <input type="hidden" id="jsonData" name="jsonData"/>
+        <input type="submit" value="Save"/>
+     </form>
 
 </div>
 </body>
