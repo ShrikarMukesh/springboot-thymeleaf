@@ -1,7 +1,14 @@
 package com.sbthymeleaf.model;
 
+import lombok.*;
+
 import java.util.Map;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class Employee {
     private String firstName;
     private String lastName;
@@ -14,5 +21,4 @@ public class Employee {
     private String[] skills;
     private Map<String, String> metadata;
 
-    // Getters and setters
 }
