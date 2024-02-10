@@ -1,8 +1,8 @@
 package com.sbthymeleaf.model;
 
 import lombok.*;
-
 import java.util.List;
+
 @Setter
 @Getter
 @AllArgsConstructor

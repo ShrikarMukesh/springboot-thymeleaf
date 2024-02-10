@@ -1,10 +1,6 @@
 package com.sbthymeleaf.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sbthymeleaf.model.Employee;
-
-import java.io.File;
-import java.io.IOException;
 
 public class EmployeeService {
     public boolean saveEmployeeData(Employee employee) {

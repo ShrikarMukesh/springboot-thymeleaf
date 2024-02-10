@@ -16,8 +16,12 @@
 
 <div id="fields-container">
     <label for="fields">Select Fields:</label>
-    <select id="fields" multiple th:each="element : ${structureInfo.elements}">
-        <option th:value="${element.name}" th:text="${element.name}"></option>
+    <select id="fields" multiple>
+        <option value="firstName">First Name</option>
+        <option value="lastName">Last Name</option>
+        <option value="age">Age</option>
+        <option value="email">Email</option>
+        <!-- Add options for other available fields -->
     </select>
     <button type="button" onclick="selectFields()">Select Fields</button>
 </div>

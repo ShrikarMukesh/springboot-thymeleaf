@@ -1,21 +1,19 @@
 package com.sbthymeleaf.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.ClassPathResource;
 import com.sbthymeleaf.model.Customer;
 import com.sbthymeleaf.model.KycDetails;
 import com.sbthymeleaf.service.CustomerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Arrays;
 
 @Controller
@@ -23,6 +21,7 @@ import java.util.Arrays;
 public class CustomerController {
 
     CustomerService customerService;
+
 
     public CustomerController(CustomerService customerService) {
         this.customerService = customerService;
