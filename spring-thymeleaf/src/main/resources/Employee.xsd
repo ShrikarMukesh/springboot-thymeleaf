@@ -1,43 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           xmlns:tns="http://example.com/employee"
            targetNamespace="http://example.com/employee"
+           xmlns="http://example.com/employee"
            elementFormDefault="qualified">
 
-    <xs:element name="employee" type="tns:Employee"/>
-
-    <xs:complexType name="Employee">
-        <xs:sequence>
-            <xs:element name="firstName" type="xs:string"/>
-            <xs:element name="lastName" type="xs:string"/>
-            <xs:element name="age" type="xs:int"/>
-            <xs:element name="email" type="xs:string"/>
-            <xs:element name="phone" type="xs:string"/>
-            <xs:element name="address" type="xs:string"/>
-            <xs:element name="department" type="xs:string"/>
-            <xs:element name="position" type="xs:string"/>
-            <xs:element name="skills" minOccurs="0">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="skill" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="metadata" minOccurs="0">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
-                            <xs:complexType>
-                                <xs:sequence>
-                                    <xs:element name="key" type="xs:string"/>
-                                    <xs:element name="value" type="xs:string"/>
-                                </xs:sequence>
-                            </xs:complexType>
-                        </xs:element>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-        </xs:sequence>
-    </xs:complexType>
-
+    <xs:element name="employee">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="firstName" type="xs:string"/>
+                <xs:element name="lastName" type="xs:string"/>
+                <xs:element name="email" type="xs:string"/>
+                <xs:element name="phone" type="xs:string"/>
+                <xs:element name="address" type="xs:string"/>
+                <xs:element name="department" type="xs:string"/>
+                <xs:element name="position" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 </xs:schema>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Form</title>
+</head>
+<body>
+<h1>Employee Form</h1>
+<form th:action="@{/employees/form}" method="post">
+    <div th:each="field : ${employeeForm}">
+        <label th:for="${field.name}" th:text="${field.name}"></label>
+        <input type="text" th:field="${field.name}" th:id="${field.name}" required>
+        <br>
+    </div>
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>
